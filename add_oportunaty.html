@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hemburger Menu | Code Mentor</title>
+    <link rel="stylesheet" href="style.css">    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <!-- <h1>Logo</h1> -->
+            <a href="index.html">
+            <img  src="my_picturs/Screenshot_from_2024-05-20_11-15-56-removebg-preview.png" alt="Logo">
+            
+        </a>
+        
+        </div>
+        <ul id="menuList">
+            <li><a href="/">Home</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="" onclick="handlelogOut(event)">logout</a></li>
+
+        </ul>
+        <div class="menu-icon">
+            <i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
+        </div>
+    </nav>
+
+
+    <script>
+        let menuList = document.getElementById("menuList")
+        menuList.style.maxHeight = "0px";
+
+        function toggleMenu(){
+            if(menuList.style.maxHeight == "0px")
+            {
+                menuList.style.maxHeight = "300px";
+            }
+            else{
+                menuList.style.maxHeight = "0px";
+            }
+        }
+    
+    </script>
+
+<style>
+    #feedback-form {
+  width: 500px;
+  margin: 0 auto;
+  background-color: #fcfcfc;
+  padding: 20px 50px 40px;
+  box-shadow: 1px 4px 10px 1px #aaa;
+  font-family: sans-serif;
+}
+
+#feedback-form * {
+    box-sizing: border-box;
+}
+
+#feedback-form h2{
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#feedback-form input {
+  margin-bottom: 15px;
+}
+
+#feedback-form input[type=text] {
+  display: block;
+  height: 32px;
+  padding: 6px 16px;
+  width: 100%;
+  border: none;
+  background-color: #f3f3f3;
+}
+
+#feedback-form label {
+  color: #777;
+  font-size: 0.8em;
+}
+
+#feedback-form input[type=checkbox] {
+  float: left;
+}
+
+#feedback-form input:not(:checked) + #feedback-phone {
+  height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+#feedback-form #feedback-phone {
+  transition: .3s;
+}
+
+#feedback-form button[type=submit] {
+  display: block;
+  margin: 20px auto 0;
+  width: 150px;
+  height: 40px;
+  border-radius: 25px;
+  border: none;
+  color: #eee;
+  font-weight: 700;
+  box-shadow: 1px 4px 10px 1px #aaa;
+  
+  background: #207cca; /* Old browsers */
+  background: -moz-linear-gradient(left, #207cca 0%, #9f58a3 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #207cca 0%,#9f58a3 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #207cca 0%,#9f58a3 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#207cca', endColorstr='#9f58a3',GradientType=1 ); /* IE6-9 */
+}
+</style>
+<script>
+    function getValue(id) {
+    return document.getElementById(id).value;
+
+}
+
+console.log(localStorage.usex);
+function addOpportunity(event) {
+    event.preventDefault();
+
+    const title = getValue("title");
+    const description = getValue("description");
+    const location = getValue("location");
+    const skills = getValue("skills");
+    console.log(skills)
+    const image = document.getElementById("image").files[0]; // Get the file object
+    const organization = 1; // Assuming organization ID is 1
+    const requiredSkills = skills; // Assuming required skills are provided in an array
+
+    const formData = new FormData(); // Create FormData object
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("location", location);
+    formData.append("skills", skills);
+    formData.append("image", image); // Append the image file
+    formData.append("organization", organization); // Append organization ID
+    formData.append("required_skills", JSON.stringify(requiredSkills)); // Append required skills array as JSON string
+
+    fetch("https://dummy-jobpace-ment-project.onrender.com/opportunities/", {
+        method: "POST",
+        body: formData, // Pass FormData object as body
+    })
+    .then((res) => res.json())
+    .then(data => {
+        console.log(data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+
+
+</script>
+<div id="feedback-form">
+    <h2 class="header">Create oportunity</h2>
+    <div>
+      <form>
+        <input id="title" type="text" name="title" placeholder="title"></input>
+        <input id="description" type="text" name="description" placeholder="description"></input>
+        <input id="location" type="text" name="location" placeholder="location"></input>
+        <input id="skills" type="text" name="skill" placeholder="skills"></input>
+        <input id="image" type="file" name="image" accept="image/*" placeholder="Upload Image">
+        <button onclick="addOpportunity(event)" type="submit">Create</button>
+      </form>
+    </div>
+  </div>
+
+            <footer>
+                <div class="footerContainer">
+                    <div class="socialIcons">
+                        <a href=""><i class="fa-brands fa-facebook"></i></a>
+                        <a href=""><i class="fa-brands fa-instagram"></i></a>
+                        <a href=""><i class="fa-brands fa-twitter"></i></a>
+                        <a href=""><i class="fa-brands fa-google-plus"></i></a>
+                        <a href=""><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                    <div class="footerNav">
+                        <ul><li><a href="">Home</a></li>
+                            <li><a href="">News</a></li>
+                            <li><a href="">About</a></li>
+                            <li><a href="">Contact Us</a></li>
+                            <li><a href="">our Team</a></li>
+                        </ul>
+                    </div>
+                    
+                </div>
+                <div class="footerBottom">
+                    <p>Copyright &copy;2023; Designed by <span class="designer">Noman</span></p>
+                </div>
+            </footer> 
+    <script src="https://kit.fontawesome.com/f8e1a90484.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+
+    <script src="login.js"></script>
+    <!-- <script src="app.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

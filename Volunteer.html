@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hemburger Menu | Code Mentor</title>
+    <link rel="stylesheet" href="style.css">    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+    
+    <nav>
+        <div class="logo">
+            <!-- <h1>Logo</h1> -->
+            <a href="index.html">
+            <img  src="my_picturs/Screenshot_from_2024-05-20_11-15-56-removebg-preview.png" alt="Logo">
+            
+        </a>
+        
+        </div>
+        <ul id="menuList">
+            <li><a href="/">Home</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="" onclick="handlelogOut(event)">logout</a></li>
+
+        </ul>
+        <div class="menu-icon">
+            <i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
+        </div>
+    </nav>
+
+
+    <script>
+        let menuList = document.getElementById("menuList")
+        menuList.style.maxHeight = "0px";
+
+        function toggleMenu(){
+            if(menuList.style.maxHeight == "0px")
+            {
+                menuList.style.maxHeight = "300px";
+            }
+            else{
+                menuList.style.maxHeight = "0px";
+            }
+        }
+    
+    </script>
+<style>
+    .totalbody{
+        min-height: 80vh;
+
+        justify-content: center;
+    }
+    table, th, td {
+      border: 1px solid;
+    }
+    
+    table {
+        
+      width: 100%;
+    }
+    </style>
+
+    <div class="totalbody">
+    <h2>OUR Volunteer</h2>
+    
+
+     <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Fist Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+    </table>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const opportunityId = urlParams.get('opportunity_id');
+            if (opportunityId) {
+                heandelVolunteer(opportunityId);
+            }
+        });
+
+        const heandelVolunteer = (opportunityId) => {
+            fetch(`https://dummy-jobpace-ment-project.onrender.com/volunteers/?opportunity_id=${opportunityId}`)
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log(data);
+                    if (data?.length > 0) {
+                        data.forEach(item => {
+                            console.log(item);
+                            showingvolinter(item?.volunteer, item?.status);
+                        });
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error fetching volunteers:', error);
+                });
+        };
+
+        const showingvolinter = (volunteerId, volunteerstatus) => {
+            if (volunteerstatus === "confirmed") {
+                fetch(`https://dummy-jobpace-ment-project.onrender.com/user/list/${volunteerId}`)
+                    .then((res) => res.json())
+                    .then((data) => {
+                        console.log(data);
+                        if (data) {
+                            loadvointear(data);
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('Error fetching volunteer details:', error);
+                    });
+            }
+        };
+
+        const loadvointear = (data) => {
+            const parent = document.getElementById("table-body");
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td>${data.id}</td>
+                <td>${data.first_name}</td>
+                <td>${data.last_name}</td>
+                <td>${data.email}</td>
+            `;
+            parent.appendChild(tr);
+        };
+    </script>
+</div>
+            <footer>
+                <div class="footerContainer">
+                    <div class="socialIcons">
+                        <a href=""><i class="fa-brands fa-facebook"></i></a>
+                        <a href=""><i class="fa-brands fa-instagram"></i></a>
+                        <a href=""><i class="fa-brands fa-twitter"></i></a>
+                        <a href=""><i class="fa-brands fa-google-plus"></i></a>
+                        <a href=""><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                    <div class="footerNav">
+                        <ul><li><a href="">Home</a></li>
+                            <li><a href="">News</a></li>
+                            <li><a href="">About</a></li>
+                            <li><a href="">Contact Us</a></li>
+                            <li><a href="">our Team</a></li>
+                        </ul>
+                    </div>
+                    
+                </div>
+                <div class="footerBottom">
+                    <p>Copyright &copy;2023; Designed by <span class="designer">Noman</span></p>
+                </div>
+            </footer> 
+    <script src="https://kit.fontawesome.com/f8e1a90484.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+
+    <script src="login.js"></script>
+    <script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

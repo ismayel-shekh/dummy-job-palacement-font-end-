@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hemburger Menu | Code Mentor</title>
+    <link rel="stylesheet" href="login.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <!-- <h1>Logo</h1> -->
+            <a href="index.html">
+                <img src="my_picturs/Screenshot_from_2024-05-20_11-15-56-removebg-preview.png" alt="Logo">
+
+            </a>
+
+        </div>
+        <ul id="menuList">
+            
+
+            <li><a href="/">Home</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="" onclick="handlelogOut(event)">logout</a></li>
+
+        </ul>
+        <div class="menu-icon">
+            <i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
+        </div>
+    </nav>
+
+
+    <script>
+        let menuList = document.getElementById("menuList")
+        menuList.style.maxHeight = "0px";
+
+        function toggleMenu() {
+            if (menuList.style.maxHeight == "0px") {
+                menuList.style.maxHeight = "300px";
+            }
+            else {
+                menuList.style.maxHeight = "0px";
+            }
+        }
+
+    </script>
+    <section class="wrapper">
+        <div class="form signup">
+            <header>Signup</header>
+            <form >
+                <input id="username" type="text" placeholder="Username" required />
+                <input id="first_name" type="text" placeholder="First name" required />
+                <input id="last_name" type="text" placeholder="Last name" required />
+                <input id="email" type="email" placeholder="Email address" required />
+                <input id="password" type="password" placeholder="Password" required />
+
+                <input id="confirm_password" type="password" placeholder="Confirm Password" required />
+                <div  class="checkbox">
+                    <input type="checkbox" id="signupCheck" />
+                    <label for="signupCheck">I accept all terms & conditions</label>
+                </div>
+                <input type="submit" onclick="handleRegistration(event)" value="Signup" />
+            </form>
+        </div>
+
+        <div class="form login">
+            <header>Login</header>
+            <form >
+                <input id="login-username" type="text" placeholder="Username" required />
+                <input id="login-password" type="password" placeholder="Password" required />
+                <a href="#">Forgot password?</a>
+                <input type="submit" onclick="handleLogin(event)" value="Login" />
+            </form>
+        </div>
+
+        <script>
+            const wrapper = document.querySelector(".wrapper"),
+                signupHeader = document.querySelector(".signup header"),
+                loginHeader = document.querySelector(".login header");
+
+            loginHeader.addEventListener("click", () => {
+                wrapper.classList.add("active");
+            });
+            signupHeader.addEventListener("click", () => {
+                wrapper.classList.remove("active");
+            });
+        </script>
+    </section>
+
+
+    <footer>
+        <div class="footerContainer">
+            <div class="socialIcons">
+                <a href=""><i class="fa-brands fa-facebook"></i></a>
+                <a href=""><i class="fa-brands fa-instagram"></i></a>
+                <a href=""><i class="fa-brands fa-twitter"></i></a>
+                <a href=""><i class="fa-brands fa-google-plus"></i></a>
+                <a href=""><i class="fa-brands fa-youtube"></i></a>
+            </div>
+            <div class="footerNav">
+                <ul>
+                    <li><a href="">Home</a></li>
+                    <li><a href="">News</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Contact Us</a></li>
+                    <li><a href="">our Team</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="footerBottom">
+            <p>Copyright &copy;2023; Designed by <span class="designer">Noman</span></p>
+        </div>
+    </footer>
+    <script src="https://kit.fontawesome.com/f8e1a90484.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+    <script src="login.js"></script>
+    <script></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>
+
+
+
+

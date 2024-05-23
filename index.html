@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hemburger Menu | Code Mentor</title>
+    <link rel="stylesheet" href="style.css">    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <!-- <h1>Logo</h1> -->
+            <a href="index.html">
+            <img  src="my_picturs/Screenshot_from_2024-05-20_11-15-56-removebg-preview.png" alt="Logo">
+            
+        </a>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+    // Check if the user is logged in
+    var isLoggedIn = /* Your logic to check if the user is logged in */ true; // Replace true with your actual logic
+
+    // Find the opportunity link element
+    var opportunityLink = document.getElementById("opportunityLink");
+
+    // Find the login status element
+    var loginStatus = document.getElementById("loginStatus");
+
+    // If user is logged in, show the opportunity link
+    console.log(localStorage)
+    if (localStorage.usex) {
+        opportunityLink.style.display = "block";
+    } else {
+        opportunityLink.style.display = "none";
+    }
+});
+
+        </script>
+        </div>
+        <ul id="menuList">
+            
+            <li><a href="add_oportunaty.html" id="opportunityLink">Create opportunitie </a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="" onclick="handlelogOut(event)">logout</a></li>
+
+        </ul>
+        <div class="menu-icon">
+            <i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
+        </div>
+    </nav>
+
+
+    <script>
+        let menuList = document.getElementById("menuList")
+        menuList.style.maxHeight = "0px";
+
+        function toggleMenu(){
+            if(menuList.style.maxHeight == "0px")
+            {
+                menuList.style.maxHeight = "300px";
+            }
+            else{
+                menuList.style.maxHeight = "0px";
+            }
+        }
+    
+    </script>
+
+    <div class="firstimage">
+        <img src="my_picturs/4327424_18827.jpg" alt="">
+
+        <h1>This June we invite you to celebrate volunteers in
+            the Big Shout-out campaign!
+            </h1>
+    </div>
+
+<div class="allcard" id="joining">
+    <!-- <div class="card">
+        <img src="https://images.unsplash.com/photo-1615147342761-9238e15d8b96?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1001&q=80" class="card__image" alt="brown couch" />
+        <div class="card__content">
+          <time datetime="2021-03-30" class="card__date">30 März 2021</time>
+          <span class="card__title">Duis autem vel eum iriure dolor in hend in vulputate<span>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1615147342761-9238e15d8b96?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1001&q=80" class="card__image" alt="brown couch" />
+        <div class="card__content">
+          <time datetime="2021-03-30" class="card__date">30 März 2021</time>
+          <span class="card__title">Duis autem vel eum iriure dolor in hend in vulputate<span>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1615147342761-9238e15d8b96?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1001&q=80" class="card__image" alt="brown couch" />
+        <div class="card__content">
+          <time datetime="2021-03-30" class="card__date">30 März 2021</time>
+          <span class="card__title">Duis autem vel eum iriure dolor in hend in vulputate<span>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1615147342761-9238e15d8b96?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1001&q=80" class="card__image" alt="brown couch" />
+        <div class="card__content">
+          <time datetime="2021-03-30" class="card__date">ISBN BD</time>
+          <span class="card__title">Join the Army for Independent Palestine<span>
+            
+        </div>
+        <h3>
+            Requerment : You must be a Muslim
+        </h3>
+        <p>
+            Hamas became the sole ruler of Gaza after violently ejecting political rivals in 2007.It has an armed wing and was thought to have about 30,000 fighters before the start of the war.The group, whose name stands for Islamic Resistance Movement, wants to create an Islamic state in place of Israel. Hamas rejects Israel's right to exist and is committed to its destruction.Hamas justified its attack as a response to what it calls Israeli crimes against the Palestinian people.
+        </p>
+        <h5>Location : Gaza / Palestin<h5>
+            <div class="buttonforcard">
+                <Button>Join</Button> 
+                <Button> Update </Button>
+            </div>
+      </div> -->
+    </div>
+
+            <footer>
+                <div class="footerContainer">
+                    <div class="socialIcons">
+                        <a href=""><i class="fa-brands fa-facebook"></i></a>
+                        <a href=""><i class="fa-brands fa-instagram"></i></a>
+                        <a href=""><i class="fa-brands fa-twitter"></i></a>
+                        <a href=""><i class="fa-brands fa-google-plus"></i></a>
+                        <a href=""><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                    <div class="footerNav">
+                        <ul><li><a href="">Home</a></li>
+                            <li><a href="">News</a></li>
+                            <li><a href="">About</a></li>
+                            <li><a href="">Contact Us</a></li>
+                            <li><a href="">our Team</a></li>
+                        </ul>
+                    </div>
+                    
+                </div>
+                <div class="footerBottom">
+                    <p>Copyright &copy;2023; Designed by <span class="designer">Noman</span></p>
+                </div>
+            </footer> 
+    <script src="https://kit.fontawesome.com/f8e1a90484.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+
+    <script src="login.js"></script>
+    <script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
